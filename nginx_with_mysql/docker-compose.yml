@@ -1,0 +1,19 @@
+## Multi containers without Dockerfile build
+version: '3'
+services:
+  nginx_webservice:
+    image: nginx:latest
+    container_name: nginx_webserver
+    ports:
+      - "8080:80"
+  mysql_dbservice:
+    image: mysql_latest
+    container_name: mysql_dbservice
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=somesecretpassword
+      - MYSQL_DATABASE=webdatabase
+      - MYSQL_USER=admin
+    volumes:
+      - '/home/mohit/data/mysqldatabase:/var/lib/mysql'
