@@ -6,7 +6,8 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8082:80"
+      - "80:80"
+      - "443:443"
   
   mysqlservice:
     image: mysql:latest
