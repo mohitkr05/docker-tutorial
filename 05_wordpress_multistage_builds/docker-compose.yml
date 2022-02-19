@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  nginxserver:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+
+  
