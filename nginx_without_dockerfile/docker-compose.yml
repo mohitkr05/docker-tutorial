@@ -1,5 +1,5 @@
 # The docker compose file
-
+version: '3'
 services:
   nginx_service:
     container_name: nginx_webserver
