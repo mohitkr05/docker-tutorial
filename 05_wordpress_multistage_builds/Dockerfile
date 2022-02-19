@@ -5,5 +5,5 @@ RUN wget https://wordpress.org/latest.zip && unzip -o latest.zip -d /wordpress
 FROM php:7.4-apache
 COPY --from=builder /wordpress/wordpress /var/www/html
 RUN chown -R www-data:www-data /var/www/html;
-COPY default /etc/nginx/sites-enabled/default 
+COPY wp-config.php /var/www/html
 CMD ["apache2-foreground"]
