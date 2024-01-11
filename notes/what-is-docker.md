@@ -132,9 +132,28 @@ d64b7ce8e205   python:3   "python /usr/src/app…"   6 minutes ago   Exited (2) 
 
 Docker images are lightweight, standalone, and executable packages that include the application code, runtime, libraries, and dependencies. Images serve as the basis for creating containers. They are often stored in registries, such as Docker Hub, for easy sharing and distribution.
 
+```bash
+$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+python       3         fc7a60e86bae   4 weeks ago   1.02GB
+python       2         68e7be49c28c   3 years ago   902MB
+
+```
+
 ### Docker Containers
 
 A Docker container is a running instance of a Docker image. Containers encapsulate the application and its dependencies, providing isolation and consistency across different environments. Containers can be started, stopped, and deleted, offering a scalable and flexible approach to application deployment.
+
+```bash
+$ docker ps -a
+
+CONTAINER ID   IMAGE      COMMAND                  CREATED         STATUS                     PORTS     NAMES
+173fbf13ccdc   python:3   "python /usr/src/app…"   6 minutes ago   Exited (2) 6 minutes ago             angry_blackburn
+6c536e8a6cfc   python:3   "python /usr/src/app…"   6 minutes ago   Exited (2) 6 minutes ago             zealous_elbakyan
+d64b7ce8e205   python:3   "python /usr/src/app…"   6 minutes ago   Exited (2) 6 minutes ago             infallible_cray
+112017a63803   python:2   "python max-hell-pyt…"   7 minutes ago   Exited (2) 7 minutes ago             quirky_shamir
+
+```
 
 ### Docker Compose
 

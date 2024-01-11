@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Docker Hands-on Tutorial</title>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <style>
+        :root {
+            --animate-delay: 0.5s;
+          
+        }
+
+        
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: "Khand", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+<!-- ![bg left:20% 20%](../assets/images/mk-logo.png) -->
+
+.center[
+<img src="../assets/images/01-primary-blue-docker-logo.png" width=50%   class="animate__animated animate__fadeIn"/>
+]
+
+
+<h1 class="animate__animated animate__fadeIn"> Complete Docker Hands-on</h1>
+
+
+
+.right[
+<img src="../assets/images/mk-logo.png" width=10% />
+]
+ 
+By - Mohit Kumar
+[mohitkr.com](https://mohitkr.com)
+
+---
+
+# Agenda
+
+- Why we use Docker
+- Understanding containers, images, Dockerfiles, tags and registeris
+- Configuring, running, listing and inspecting Docker containers
+- Check the logs for a docker container
+- Docker container networking
+- Docker container storage
+- Environment variables
+- Building pushing Docker images
+- Docker image examples
+- Working with Docker compose
+- Docker registeries and working with them
+- Side car containers
+- Kubernetes
+
+---
+
+## What is Docker?
+
+.right[
+<img src="../assets/images/01-primary-blue-docker-logo.png" width=50%   class="animate__animated animate__fadeIn"/>
+]
+
+.left[
+
+- Docker is an open-source platform for automating, deploying, and managing applications inside containers.
+- Containers allow bundling applications and their dependencies into a single package, ensuring consistency across different environments.
+- Docker enables lightweight, portable, and scalable application deployment.
+
+]
+
+---
+
+# Matrix of Hell
+
+
+---
+
+# Why not a virtual machine 
+
+
+---
+
+## Key Concepts
+
+- **Containers:** Lightweight, standalone, and executable packages that include everything needed to run a piece of software.
+
+- **Images:** Templates for containers, providing a snapshot of a file system, application code, and runtime.
+
+- **Docker Hub:** Centralized repository for sharing and distributing Docker images.
+
+---
+
+## How Docker Works
+
+```dockerfile
+# Dockerfile example
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y nginx
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+  // Set the slideshow display ratio
+  // Default: '4:3'
+  // Alternatives: '16:9', ...
+  ratio: '16:9',
+  highlightStyle: 'monokai',
+  highlightLanguage: 'bash',
+  navigation: {
+    // Enable or disable navigating using scroll
+    // Default: true
+    // Alternatives: false
+    scroll: true,
+
+    // Enable or disable navigation using touch
+    // Default: true
+    // Alternatives: false
+    touch: true,
+
+    // Enable or disable navigation using click
+    // Default: false
+    // Alternatives: true
+    click: false,
+  },
+
+      });
+
+    </script>
+  </body>
+</html>
