@@ -29,6 +29,105 @@
         
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      
+      
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
     </style>
   </head>
   <body>
@@ -56,21 +155,98 @@ By - Mohit Kumar
 
 ---
 
-# Agenda
+## Agenda
+
+--
 
 - Why we use Docker
-- Understanding containers, images, Dockerfiles, tags and registeris
+
+--
+
+- Understanding containers, images, Dockerfiles, tags and registeries
+
+--
+
 - Configuring, running, listing and inspecting Docker containers
+
+--
+
 - Check the logs for a docker container
+
+--
+
 - Docker container networking
+
+--
+
 - Docker container storage
+
+--
+
 - Environment variables
+
+--
+
 - Building pushing Docker images
+
+--
+
 - Docker image examples
+
+--
+
 - Working with Docker compose
-- Docker registeries and working with them
+
+--
+
 - Side car containers
+
+--
+
 - Kubernetes
+
+--
+
+---
+# Pre-requisite
+
+- docker
+
+- docker-compose
+
+- git
+
+
+--- 
+# Transporting goods before shipping containers
+
+.right-column[
+<img src="../assets/images/Queens_Wharf,_Port_Adelaide,_before_1927.jpeg" width=50%   class="animate__animated animate__fadeIn"/>
+]
+
+.left-column[
+- Manual sorting of most shipments 
+- Dock front warehouses
+- Thousands of dock workers - handle
+- congestion in ports
+- Delays in shipping time,
+- losses from damage and theft
+]
+---
+
+# A Shipping container
+
+.center[
+<img src="../assets/images/shipping-container.png" width=30%   class="animate__animated animate__fadeIn"/>
+]
+
+--
+
+What problems does a shipping container solve?
+
+- *Standardization* 
+- *Isolation* 
+- *Abstraction*
 
 ---
 
@@ -86,7 +262,7 @@ By - Mohit Kumar
 ---
 
 # Are containers Virtual Machines?
-
+--
 ## No 
 
 
@@ -110,6 +286,7 @@ Size and Resource Usage:
 - *VMs* : Are heavier and slower to start, requiring gigabytes of space. This limits the number of VMs that can run on the same hardware.
 
 ---
+
 # Containers and Virtual Machines 
 
 Isolation:
@@ -118,6 +295,7 @@ Isolation:
 - *VMs* : Have their own complete virtual hardware, providing stronger isolation and greater security guarantees compared to containers
 
 ---
+
 # Containers and Virtual Machines 
 
 Portability:
@@ -125,7 +303,8 @@ Portability:
 - *Containers* : are highly portable. They run consistently on any system with the container runtime installed, regardless of the underlying OS.
 - *VMs* : are less portable. While portable across similar hardware, differences in hardware configuration can cause compatibility issues.
 
---- 
+---
+
 # Containers and Virtual Machines 
 
 Use Cases:
@@ -134,6 +313,18 @@ Use Cases:
 - *VMs* : Suitable for legacy applications, software requiring direct hardware access, and situations where strong isolation and security are paramount.
 
 ---
+
+# Will Containers replace Virtual Machines? 
+
+--
+## No
+
+--
+
+### Not everywhere
+
+---
+
 
 # What is Docker?
 
@@ -179,6 +370,7 @@ which are dependent on `Python 2.7` and `Python ~ 3.0` respectively.
 ---
 
 # Why not a virtual machine 
+
 
 
 ---
