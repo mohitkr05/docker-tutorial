@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Docker Hands-on Tutorial</title>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <style>
+        :root {
+            --animate-delay: 0.5s;
+          
+        }        
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: "Khand", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      
+      
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        
+        width: 35%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 60%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+<!-- ![bg left:20% 20%](../assets/images/mk-logo.png) -->
+
+.center[
+<img src="../assets/images/01-primary-blue-docker-logo.png" width=50%   class="animate__animated animate__fadeIn"/>
+]
+
+
+<h1 class="animate__animated animate__fadeIn"> Complete Docker Hands-on</h1>
+
+
+
+.right[
+<img src="../assets/images/mk-logo.png" width=10% />
+]
+ 
+By - Mohit Kumar
+[mohitkr.com](https://mohitkr.com)
+
+---
+
+
+# What is Docker?
+
+.right-column[
+<img src="../assets/images/01-primary-blue-docker-logo.png" width=80%   class="animate__animated animate__fadeIn"/>
+]
+
+.left-column[
+As per wikipedia
+
+> Docker is an open-source project that automates the deployment of software applications inside containers by providing an additional layer of abstraction and automation of OS-level virtualization on Linux.It accomplishes this by using an operating system technology called containers. 
+
+
+]
+
+---
+## What is Docker?
+
+As per Docker documentation 
+
+- Docker is an open platform for developing, shipping, and running applications.
+- Docker is written in the Go programming language and takes advantage of several features of the Linux kernel to deliver its functionality.
+- Docker uses a technology called namespaces to provide the isolated workspace called the container. When you run a container, Docker creates a set of namespaces for that container.
+
+---
+
+## So what actually is Docker?
+
+--
+
+- **Docker Engine**
+
+    - Docker Engine is the core technology that powers Docker containers. It's a low-level, command-line interface (CLI) tool that allows you to build, run, manage, and share containers.
+    - Docker Engine interacts directly with your operating system's kernel to manage container resources like CPU, memory, and storage. It runs as a background daemon process and is accessible through Docker CLI commands.
+
+--
+- **Docker Desktop**
+
+    - Docker Desktop is a platform built around Docker Engine that provides a user-friendly graphical interface (GUI) for managing containers. It's aimed at developers and individuals who want to easily work with Docker without requiring deep technical knowledge.
+    - Docker Desktop installs and runs Docker Engine in a lightweight virtual machine (VM) on your system. This VM manages the container environment and provides the GUI for interacting with it.
+
+---
+
+## Docker engine vs Docker Desktop 
+
+.center[
+<img src="../assets/images/docker-client-v-docker-desktop.png" width=80%   class="animate__animated animate__fadeIn"/>
+]
+
+
+
+---
+
+## Docker Desktop
+
+
+
+# DevOps Matrix of Hell
+
+.center[
+<img src="../assets/images/matrix-of-hell.png" width=60%   class="animate__animated animate__fadeIn"/>
+]
+
+---
+#  Matrix of hell
+
+To understand the matrix of hell, let us understand the following example, where we have two applications 
+  - `max-hell-python-2.py` & 
+  - `max-hell-python-3.py`, 
+  
+which are dependent on `Python 2.7` and `Python ~ 3.0` respectively.
+
+
+---
+
+# Matrix of hell
+
+.center[
+<img src="../assets/images/dedicated-wiring-guy.jpg"  width=60%   class="animate__animated animate__fadeIn"/>
+]
+
+
+---
+
+# Why not a virtual machine 
+
+
+
+---
+
+## Key Concepts
+
+- **Containers:** Lightweight, standalone, and executable packages that include everything needed to run a piece of software.
+
+- **Images:** Templates for containers, providing a snapshot of a file system, application code, and runtime.
+
+- **Docker Hub:** Centralized repository for sharing and distributing Docker images.
+
+---
+
+## How Docker Works
+
+```dockerfile
+# Dockerfile example
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y nginx
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+  // Set the slideshow display ratio
+  // Default: '4:3'
+  // Alternatives: '16:9', ...
+  ratio: '16:9',
+  highlightStyle: 'monokai',
+  highlightLanguage: 'bash',
+  navigation: {
+    // Enable or disable navigating using scroll
+    // Default: true
+    // Alternatives: false
+    scroll: true,
+
+    // Enable or disable navigation using touch
+    // Default: true
+    // Alternatives: false
+    touch: true,
+
+    // Enable or disable navigation using click
+    // Default: false
+    // Alternatives: true
+    click: false,
+  },
+
+      });
+
+    </script>
+  </body>
+</html>
