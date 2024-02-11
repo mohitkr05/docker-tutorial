@@ -384,6 +384,158 @@ RUN apt-get update && apt-get install -y nginx
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
+---
+
+## Docker images 
+
+In Docker, an image is a lightweight, standalone, and executable package that includes everything needed to run a piece of software, including the code, a runtime, libraries, environment variables, and system tools
+
+
+---
+
+## Features of a Docker image
+
+- Layered File System: Docker images are based on a layered file system. Each layer represents a set of file changes, and these layers are stacked on top of each other to form the complete image
+- Immutable: Docker images are designed to be immutable. Once an image is built, its contents do not change.
+- Registry: Docker images can be stored in repositories, which are collections of related images
+- Dockerfile: Docker images are created using a set of instructions specified in a file called a Dockerfile. 
+- Versioning: Docker images can have different versions (tags) to represent variations or updates
+- Distribution: Docker images can be easily distributed and shared across different environments. 
+
+---
+## Understanding the Layered file system 
+
+
+```dockerfile
+# Dockerfile example
+FROM ubuntu:latest <-- Layer 0
+RUN apt-get update && apt-get install -y nginx <-- Layer 1
+CMD ["nginx", "-g", "daemon off;"] <-- Layer 2 
+
+```
+
+
+
+
+```
+PS C:\workspace\git\docker-tutorial\docker-images-examples\nginx> docker history nginxmohit:1.0
+IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
+ef31eff93dcd   7 minutes ago   CMD ["nginx" "-g" "daemon off;"]                0B        buildkit.dockerfile.v0
+<missing>      7 minutes ago   EXPOSE map[80/tcp:{}]                           0B        buildkit.dockerfile.v0
+<missing>      7 minutes ago   RUN /bin/sh -c apt-get -y update && apt-get …   104MB     buildkit.dockerfile.v0
+<missing>      2 weeks ago     /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B
+<missing>      2 weeks ago     /bin/sh -c #(nop) ADD file:99224b1f237763b30…   77.9MB
+<missing>      2 weeks ago     /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B
+<missing>      2 weeks ago     /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B
+<missing>      2 weeks ago     /bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH     0B
+<missing>      2 weeks ago     /bin/sh -c #(nop)  ARG RELEASE                  0B
+```
+*missing - This could happen when certain intermediate layers were pruned or removed, making it impossible to retrieve detailed information.
+---
+
+## Storage Driver comparison 
+
+| Storage Driver     | Characteristics                                           | Use Cases                                                    |
+|---------------------|-----------------------------------------------------------|--------------------------------------------------------------|
+| aufs                | Multiple filesystem layers, simplicity, and efficiency    | Commonly used on Ubuntu systems, older storage driver        |
+| devicemapper        | Thin provisioning, snapshot support, uses device mapper    | Used in Red Hat-based systems, good performance, complex setup|
+| btrfs               | Copy-on-write, snapshots, checksums, compression          | Advanced features, experimental or specific use cases         |
+| overlay2 / overlay  | Union mount filesystem, lightweight, simple and efficient | Default choice for many container runtimes, good performance   |
+| zfs                 | Copy-on-write, snapshots, data integrity verification     | Less common due to resource intensity, used for data integrity|
+
+
+---
+## Types of Docker Images 
+### Based on the functionality in Image building process 
+
+- Base Images: These images serve as the foundation for other images. Base images typically include a minimal operating system and essential runtime components. They are often used as starting points for building more specialized images.
+- Builder Images: Builder images are designed for the purpose of building and compiling code. They typically include development tools, compilers, and other necessary components to compile and build applications. Once the build is complete, the resulting artifacts can be copied to a smaller runtime image.
+- Multi-Stage Images: Multi-stage images are used to streamline the size of the final Docker image. They involve using multiple FROM statements in a single Dockerfile to create separate stages for building and running the application. This helps to reduce the size of the final runtime image by excluding unnecessary build dependencies.
+- Scratch Images: Scratch is a special minimalistic image that serves as an empty starting point. It contains no files or operating system components, making it the smallest possible image. Scratch images are useful for scenarios where the application is compiled into a single binary and doesn't rely on an operating system.
+
+---
+## Types of Docker Images 
+
+### Based on the verification
+
+- Official Images: Docker Hub maintains a set of "official" images that are curated and provided by the Docker community. These images cover a wide range of popular software and services, including operating systems, databases, web servers, and more.
+- Custom Images: Custom images are created by users or organizations to package and distribute their own applications. These images are tailored to specific use cases and often start with a base image before adding application code and dependencies.
+
+
+---
+
+## Dockerfile instructions
+
+- FROM
+  - Specifies the base image for the build. All subsequent instructions are based on this image.
+  - Usage: `FROM image:tag`
+- COPY 
+  - Copies files or directories from the source on the host into the image at the specified destination.
+  - Usage: `COPY source destination`
+- ADD 
+  - Similar to COPY but with additional features. It can copy local files, remote URLs, and extract compressed files.
+  - Usage: `ADD source destination`
+- RUN 
+  - Executes a command during the build process. This command is run in a new layer, and changes to the file system persist for the next instruction.
+  - Usage: `RUN command`
+- CMD 
+  - Provides default arguments for the entry point of the container. It is usually used to specify the command that will run when the container starts.
+  - Usage: `CMD ["executable", "param1", "param2"]` or `CMD command param1 param2`
+- ENTRYPOINT 
+  - Configures a container to run as an executable. The specified command is the default application for the container.
+  - Usage: `ENTRYPOINT ["executable", "param1", "param2"]` or `ENTRYPOINT command param1 param2`
+
+---
+## Dockerfile instructions
+
+- WORKDIR
+  - Sets the working directory for any subsequent RUN, CMD, ENTRYPOINT, COPY, and ADD instructions.
+  - Usage: `WORKDIR /path/to/directory`
+- EXPOSE
+  - Informs Docker that the container listens on the specified network ports at runtime. It does not actually publish the ports.
+  -  Usage: `EXPOSE port`
+- ENV
+  - Sets environment variables in the image. These variables are available to subsequent build stages and during the runtime of the container.
+  - Usage: `ENV key=value`
+- ARG
+  - Defines build-time variables that can be used in the Dockerfile. They are set using --build-arg when running docker build.
+  - Usage: `ARG variable=value`
+- LABEL
+  - Adds metadata to an image in the form of key-value pairs. It is often used to provide information about the image.
+  - Usage: `LABEL key="value"`
+
+---
+## Dockerfile instructions
+
+- VOLUME
+  - Creates a mount point for external volumes. This is typically used to persist data outside the container.
+  - Usage: `VOLUME ["/data"]`
+- USER
+  - Sets the user or UID to use when running the image. It changes the effective user ID at runtime.
+  - Usage: `USER username`
+- HEALTHCHECK
+  - Defines a command to check the health of a running container. This can be used with docker container inspect to check the health status.
+  - Usage: `HEALTHCHECK [options] CMD command`
+
+- SHELL  
+  - Configures the default shell used for the RUN instruction.
+  - Usage: `SHELL ["executable", "parameters"]`
+
+---
+
+## Example of Docker images creation
+
+1. Nginx image 
+2. Copying images and text files to Docker image 
+
+
+
+---
+
+## How to create your own Docker repository
+
+
+---
 
 
     </textarea>
