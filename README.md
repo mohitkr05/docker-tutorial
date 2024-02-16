@@ -35,6 +35,12 @@ Notes and excercises for my Docker bootcamp
 
 ## Dockerfile examples
 
+1. [Docker Init](docker-images-examples/docker-init/Dockerfile)
+2. [Nginx with dockerfile](docker-images-examples/nginx/Dockerfile)
+3. [Nginx with COPY instruction](docker-images-examples/nginx-copy/Dockerfile)
+4. [Nginx with ADD instruction](docker-images-examples/nginx-add/Dockerfile)
+5. [python-flask](docker-images-examples/python-flask/Dockerfile)
+
 
 ## Docker-compose examples
 
