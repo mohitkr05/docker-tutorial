@@ -16,4 +16,4 @@ services:
       - MYSQL_DATABASE=webdatabase
       - MYSQL_USER=admin
     volumes:
-      - '/home/mohit/data/mysqldatabase:/var/lib/mysql'
+      - '../:/var/lib/mysql'

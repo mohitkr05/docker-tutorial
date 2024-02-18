@@ -6,4 +6,4 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - "/home/mohit/data/nginx_development:/usr/share/nginx/html"
+      - ".:/usr/share/nginx/html"
