@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as builder
+FROM ubuntu:24.04 as builder
 RUN apt-get -y update && apt-get -y install wget unzip
 RUN wget https://wordpress.org/latest.zip && unzip -o latest.zip -d /wordpress
 
